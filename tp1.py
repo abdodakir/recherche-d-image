@@ -49,8 +49,8 @@ def imagesSimil(distim, nubchoix):
         print("{} => l'image similaire est {} avec distance de {}".format(i+1,sortedsimil[i][0],sortedsimil[i][1]))
     print("=="*10)
 
-# fonction principal
-def main():
+# fonction principal de couleur
+def mainCouleur():
     choiximage = str(input("choisir une image: "))
     choixsimil = int(input("choisir le nombre des images plus simil : "))
     choixtaille = int(input("choisir le nombre des images sources: "))
@@ -69,8 +69,6 @@ def main():
         distimages.append(calcDist(hist, imgs1))
     # les images les plus similaires
     imagesSimil(distimages, choixsimil)
-
-#main()
 
 # ------------------------------- Texture ------------------------------
 
@@ -115,7 +113,7 @@ def similTexture(distimg, NBsimil):
         print("{} => l'image similaire est {} avec distance de {}".format(i+1,sortedsimilT[i][0],sortedsimilT[i][1]))
     print("=="*10)
 
-# fonction principal
+# fonction principal de texture
 def mainTexture():
     choiximage = str(input("choisir une image requet: "))
     NBsimil = int(input("choisir le nombre des images plus simil: "))
@@ -128,9 +126,22 @@ def mainTexture():
         distReqRef[i+1] = abs(int(Uniformite(CalcOccu(imageRef[i])))-int(unifReq))
     similTexture(distReqRef, NBsimil)
 
-mainTexture()
-
 # ------------------------------- Globale ------------------------------
+
+def main():
+    print("--"*20)
+    print("|    Choisir un methode de recherche : |")
+    print("|    1 : Recherche par couleur         |")
+    print("|    2 : Recherche par texture         |")
+    print("--"*20)
+    methode = int(input("choisir le numero de methode : "))
+    if methode == 1:
+        mainCouleur()
+    elif methode == 2:
+        mainTexture()
+    else:
+        main()
+main()
 
 cv.waitKey(0)
 cv.destroyAllWindows()
