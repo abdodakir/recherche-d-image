@@ -2,7 +2,7 @@
 
 this application is about how to search for a similar image in a store of images.
 
-##requirement
+## requirement
 
 Use the package manager pip to install the requirement from requirements.txt.
 
